@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/microservices_test
+    username: sa
+    password: rootroot
+
+security:
+  token: "eyJhbGciOiJSUzUxMiJ9.eyJzdWIiOiJqb2huLmRvZSIsImV4cCI6MTcwNjEyNDE0N30.dDjilItAOZ38rXpx_dhkiUtvCz6Y2bpSqKtIF8Z51Luc526uZTD4fwAYmhEmwmRQa_BZ6CoKrimVyWNDQIywWVLAgW0w9NT2UxpJuzEX4KBSM3VnvPFrAZ90Hs-LRKJV-zPncqPaTwr2RCGgZT_34KzRwScKoJDMXomsoRCWh6U1EwwBqqJ6e3FWesM78uEhkSta31MUF9S27n7kdXEPiWNKNiIrtAC5XQqe3kBLZ9uL7WFAN5qzhAvdvIYes-61ZSh1pQ5-CIq30CuU2lwFrl_dF-2uNAHZ04oOZgUCI0BFF38Gd9Y0pDIAlUJRVvR_NJOr11rDw4XbKul9w1_rqQ"
+
+logging:
+  level:
+    root: debug
