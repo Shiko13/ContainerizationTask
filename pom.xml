@@ -11,10 +11,10 @@
   </parent>
 
   <groupId>com.epam</groupId>
-  <artifactId>CucumberTask</artifactId>
+  <artifactId>ContainerizationTask</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>CucumberTask</name>
-  <description>CucumberTask</description>
+  <name>ContainerizationTask</name>
+  <description>ContainerizationTask</description>
   <packaging>pom</packaging>
 
   <properties>
