@@ -1,0 +1,83 @@
+version: "3.8"
+
+services:
+  main-service:
+    build:
+      context: MainService/
+      dockerfile: Dockerfile
+    container_name: main-container
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo-db
+      - postgresql-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql-db:5432/microservices
+      - MONGODB_HOST=mongo-db
+      - MONGODB_PORT=27017
+      - MONGO_INITDB_DATABASE=microservices
+    networks:
+      - my-network
+
+  stats-service:
+    build:
+      context: TrainerWorkloadService/
+      dockerfile: Dockerfile
+    container_name: stats-container
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo-db
+    environment:
+      - MONGODB_HOST=mongo-db
+      - MONGODB_PORT=27017
+      - MONGO_INITDB_DATABASE=microservices
+    networks:
+      - my-network
+
+  activemq:
+    image: rmohr/activemq
+    container_name: activemq-container
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+      - "5672:5672"
+      - "1883:1883"
+    environment:
+      ACTIVEMQ_ADMIN_LOGIN: admin
+      ACTIVEMQ_ADMIN_PASSWORD: admin
+    networks:
+      - my-network
+
+  mongo-db:
+    image: mongo
+    container_name: mongo-container
+    volumes:
+      - mongodb-data:/data/db
+    ports:
+      - "27017:27017"
+    networks:
+      - my-network
+
+  postgresql-db:
+    image: postgres
+    container_name: postgres-container
+    volumes:
+      - postgresql-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: rootroot
+      POSTGRES_DB: microservices
+    ports:
+      - "5432:5432"
+    networks:
+      - my-network
+
+volumes:
+  mongodb-data:
+  postgresql-data:
+
+networks:
+  my-network:
+    driver: bridge
+

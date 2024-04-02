@@ -5,11 +5,15 @@ spring:
   application:
     name: spring-cloud-eureka-statistic-client
   activemq:
-    broker-url: tcp://localhost:61616
+#    broker-url: tcp://localhost:61616
+  broker-url: tcp://activemq:61616
   data:
     mongodb:
-      database: microservices
-      uri: mongodb://localhost:27017
+      database: ${MONGO_INITDB_DATABASE}
+      uri: mongodb://${MONGODB_HOST}:${MONGODB_PORT}
+      host: ${MONGODB_HOST}
+#      database: microservices
+#      uri: mongodb://localhost:27017
       auto-index-creation: true
 
 eureka:
