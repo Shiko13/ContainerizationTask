@@ -5,7 +5,8 @@ spring:
   application:
     name: spring-cloud-eureka-statistic-client
   activemq:
-    broker-url: tcp://localhost:61616
+#    broker-url: tcp://localhost:61616
+  broker-url: tcp://activemq:61616
   data:
     mongodb:
       database: ${MONGO_INITDB_DATABASE}

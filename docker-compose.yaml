@@ -35,6 +35,20 @@ services:
     networks:
       - my-network
 
+  activemq:
+    image: rmohr/activemq
+    container_name: activemq-container
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+      - "5672:5672"
+      - "1883:1883"
+    environment:
+      ACTIVEMQ_ADMIN_LOGIN: admin
+      ACTIVEMQ_ADMIN_PASSWORD: admin
+    networks:
+      - my-network
+
   mongo-db:
     image: mongo
     container_name: mongo-container
